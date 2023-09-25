@@ -1,0 +1,9 @@
+---
+  - name: Pub_key
+    hosts: build_server
+    tasks:
+      - name: Copy key
+        authorized_key:
+          user: cddeploy
+          state: present
+          key: "{{lookup('file','/home/cddeploy/.ssh/id_rsa.pub')}}"
