@@ -12,12 +12,15 @@ jenkins:
         - "Overall/Administer:cddeploy"
         - "Overall/Read:authenticated"
 
+  remotingSecurity:
+    enabled: true
+    
 security:
   queueItemAuthenticator:
     authenticators:
-    - global:
-        strategy: triggeringUsersAuthorizationStrategy
+      - global:
+          strategy: triggeringUsersAuthorizationStrategy
 
 unclassified:
   location:
-    url: http://localhost:8585/
+    url: http://localhost:8080/
