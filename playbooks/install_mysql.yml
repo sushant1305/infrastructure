@@ -1,0 +1,30 @@
+---
+- hosts: controller
+  become: yes
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars_files:
+    - root_password.yml
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+  
+  tasks:
+    - name: Install mysql
+      community.docker.docker_container:
+        name: mysql
+        image: mysql:latest
+        networks:
+          - name: wordpress
+        volumes:
+          - db_data:/var/lib/mysql
+        env:
+          MYSQL_DATABASE: "sample"
+          MYSQL_USER: "admin"
+          MYSQL_PASSWORD: "admin"
+          MYSQL_ROOT_PASSWORD: 'root'
+          
+        restart: true
+        ports:
+          - "3306:3306"
