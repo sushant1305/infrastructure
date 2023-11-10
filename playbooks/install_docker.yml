@@ -10,14 +10,11 @@
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
 
-
   tasks:
     - name: Install dependencies
       yum:
         name:
           - yum-utils
-          - device-mapper-persistent-data
-          - lvm2
         use_backend: "yum"
         state: latest
 
