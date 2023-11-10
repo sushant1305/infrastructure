@@ -1,4 +1,5 @@
 ---
+/
 - name: Docker Installation
   hosts: build_server
   remote_user: cddeploy
