@@ -1,0 +1,36 @@
+---
+- name: Docker Installation
+  hosts: build_server
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+
+
+  tasks:
+    - name: Install dependencies
+      yum:
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: latest
+
+    - name: Get Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install Docker
+      yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
+        
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
