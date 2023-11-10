@@ -1,7 +1,6 @@
 ---
-/
 - name: Docker Installation
-  hosts: build_server
+  hosts: localhost
   remote_user: cddeploy
   become: true
   become_method: sudo
@@ -10,11 +9,12 @@
 
   tasks:
     - name: Install dependencies
-      yum:
+      ansible.builtin.yum:
         name:
           - yum-utils
           - device-mapper-persistent-data
           - lvm2
+	use_backend: "auto"
         state: latest
 
     - name: Get Docker repo
