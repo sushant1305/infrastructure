@@ -1,6 +1,6 @@
 ---
 - name: Docker Installation
-  hosts: build_server 
+  hosts: all 
   remote_user: cddeploy
   become: true
   become_method: sudo
