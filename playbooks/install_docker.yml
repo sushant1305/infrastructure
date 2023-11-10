@@ -15,7 +15,8 @@
       yum:
         name:
           - yum-utils
-          - python-pip
+          - python3
+          - python3-pip
         use_backend: "yum"
         state: latest
     
