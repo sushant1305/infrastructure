@@ -20,7 +20,8 @@
         state: latest
     
     - name: Install Docker SDK for python
-      shell: pip install docker
+      pip: 
+        name: docker
 
     - name: Get Docker repo
       get_url:
