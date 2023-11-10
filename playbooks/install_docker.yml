@@ -28,7 +28,6 @@
         name:
           - docker-ce
           - docker-ce-cli
-          - containerd.io
         state: latest
         
     - name: Start Docker service
