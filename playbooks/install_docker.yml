@@ -18,6 +18,9 @@
           - python3-pip
         use_backend: "yum"
         state: latest
+    
+    - name: Install Docker SDK for python
+      shell: pip install docker
 
     - name: Get Docker repo
       get_url:
