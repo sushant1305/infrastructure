@@ -14,7 +14,7 @@
           - yum-utils
           - device-mapper-persistent-data
           - lvm2
-	use_backend: "auto"
+	      use_backend: "auto"
         state: latest
 
     - name: Get Docker repo
