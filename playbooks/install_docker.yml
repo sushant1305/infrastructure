@@ -23,6 +23,7 @@
     - name: Install Docker SDK for python
       pip: 
         name: docker
+        executable: pip3
 
     - name: Get Docker repo
       get_url:
