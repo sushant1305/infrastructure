@@ -17,14 +17,19 @@
         use_backend: "yum"
         state: latest
         
+    - name: Create a volume with options
+      docker_volume:
+        name: volume_sonarqube
+        driver_options:
+          device: /dev/sonarqube
+          
     - name: Install sonar
       community.docker.docker_container:
         name: sonarqube
         image: sonarqube:latest
         volumes:
-          - /opt/sonarqube/data:/home/cddeploy/sonarqube/data
-          - /opt/sonarqube/logs:/home/cddeploy/sonarqube/logs
-          - /opt/sonarqube/extensions:/home/cddeploy/sonarqube/extensions
+          - volume_sonarqube:/opt/sonarqube
+
         env:
           SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
         restart: true
