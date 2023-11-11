@@ -1,0 +1,24 @@
+---
+- hosts: db_server
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars_files:
+    - root_password.yml
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+    ansible_python_interpreter: /usr/bin/python3
+  
+  tasks:
+    - name: Install mariadb
+      community.docker.docker_container:
+        name: mariadb
+        image: mariadb:latest
+        volumes:
+          - db_data:/home/cddeploy/mdb_data
+        env:
+          MARIADB_ROOT_PASSWORD: admin123
+        restart: true
+        ports:
+          - "3306:3306"
