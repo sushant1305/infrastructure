@@ -1,5 +1,5 @@
 ---
-- hosts: controller
+- hosts: db
   remote_user: cddeploy
   become: true
   become_method: sudo
