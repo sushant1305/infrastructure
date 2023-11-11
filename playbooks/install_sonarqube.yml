@@ -1,0 +1,33 @@
+---
+- hosts: agent
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars_files:
+    - root_password.yml
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+    ansible_python_interpreter: /usr/bin/python3
+  
+  tasks:
+    - name: Install dependencies
+      yum:
+        name:
+          - jdk
+        use_backend: "yum"
+        state: latest
+        
+    - name: Install sonar
+      community.docker.docker_container:
+        name: sonarqube
+        image: sonarqube:latest
+        volumes:
+          - /opt/sonarqube/data:/home/cddeploy/sonarqube/data
+          - /opt/sonarqube/logs:/home/cddeploy/sonarqube/logs
+          - /opt/sonarqube/extensions:/home/cddeploy/sonarqube/extensions
+        env:
+          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: true
+        restart: true
+        ports:
+          - "9000:9000"
