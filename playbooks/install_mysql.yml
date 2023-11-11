@@ -15,13 +15,12 @@
         name: mysql
         image: mysql:latest
         volumes:
-          - db_data:/var/lib/mysql
+          - db_data:/home/cddeploy/mysql_data
         env:
           MYSQL_DATABASE: "sample"
           MYSQL_USER: "admin"
           MYSQL_PASSWORD: "admin"
           MYSQL_ROOT_PASSWORD: 'root'
-          
         restart: true
         ports:
-          - "3306:3306"
+          - "33306:3306"
