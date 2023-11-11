@@ -11,14 +11,15 @@
     ansible_python_interpreter: /usr/bin/python3
   
   tasks:
-    - name: Install mariadb
+    - name: Install sqlserver
       community.docker.docker_container:
-        name: mariadb
-        image: mariadb:latest
+        name: sqlserver
+        image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
         volumes:
-          - db_data:/home/cddeploy/mdb_data
+          - sqlvolume:/var/opt/mssql
         env:
-          MARIADB_ROOT_PASSWORD: admin123
+          ACCEPT_EULA: Y
+          MSSQL_SA_PASSWORD: Admin123#
         restart: true
         ports:
-          - "3306:3306"
+          - "1433:1433"
