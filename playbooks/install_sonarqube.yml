@@ -13,7 +13,7 @@
     - name: Install dependencies
       yum:
         name:
-          - jdk
+          - java
         use_backend: "yum"
         state: latest
         
