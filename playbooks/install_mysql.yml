@@ -1,5 +1,5 @@
 ---
-- hosts: db
+- hosts: db_server
   remote_user: cddeploy
   become: true
   become_method: sudo
@@ -24,3 +24,5 @@
         restart: true
         ports:
           - "33306:3306"
+        vars:
+          ansible_python_interpreter: /usr/bin/python3
