@@ -26,7 +26,9 @@
           - /opt/sonarqube/logs:/home/cddeploy/sonarqube/logs
           - /opt/sonarqube/extensions:/home/cddeploy/sonarqube/extensions
         env:
-          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: true
+          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
         restart: true
         ports:
           - "9000:9000"
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
