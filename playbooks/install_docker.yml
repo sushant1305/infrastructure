@@ -1,6 +1,6 @@
 ---
 - name: Docker Installation
-  hosts: all 
+  hosts: db_server 
   remote_user: cddeploy
   become: true
   become_method: sudo
@@ -24,6 +24,8 @@
       pip: 
         name: docker
         executable: pip3
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
 
     - name: Get Docker repo
       get_url:
