@@ -8,7 +8,6 @@
     - root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
-    ansible_python_interpreter: /usr/bin/python3
   
   tasks:
     - name: Install dependencies
