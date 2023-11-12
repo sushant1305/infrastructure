@@ -10,7 +10,7 @@
   
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
-    git_url: "git@github.com:your_username/your_repository.git"
+    git_repo_url: "git@github.com:sushant1305/infrastructure.git"
     target_directory: "/home/cddeploy/ansible/infrastructure/sonarqube"
     sshkey: "~/.ssh/id_rsa"
   
