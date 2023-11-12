@@ -30,4 +30,3 @@
         clone: yes
         update: yes
         version: "feature/ansible"
-      sudo_user: cddeploy
