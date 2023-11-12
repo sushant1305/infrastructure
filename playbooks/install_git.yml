@@ -10,9 +10,6 @@
   
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
-    git_repo_url: "git@github.com:sushant1305/infrastructure.git"
-    target_directory: "/home/cddeploy/ansible/infrastructure/sonarqube"
-    sshkey: "~/.ssh/id_rsa"
   
   tasks:
     - name: Install dependencies
@@ -21,15 +18,3 @@
           - git
         use_backend: "yum"
         state: latest
-
-    - name: Clone Git repository
-      git:
-        repo: "{{ git_repo_url }}"
-        dest: "{{ target_directory }}"
-        key_file: "{{ sshkey }}"
-        clone: yes
-        update: yes
-        version: "feature/ansible"
-        accept_hostkey: yes
-        force: yes
-      become_user: cddeploy

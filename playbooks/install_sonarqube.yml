@@ -8,7 +8,10 @@
     - root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
-  
+    git_repo_url: "git@github.com:sushant1305/sonarqube.git"
+    target_directory: "/home/cddeploy"
+    sshkey: "~/.ssh/id_rsa"
+
   tasks:
     - name: Install dependencies
       yum:
@@ -35,7 +38,7 @@
           - sonarqube_data:/opt/sonarqube/data
           - sonarqube_logs:/opt/sonarqube/logs
           - sonarqube_extensions:/opt/sonarqube/extensions
-          - /home/cddeploy/ansible/infrastructure/sonarqube/conf:/opt/sonarqube/conf
+          - /home/cddeploy/sonarqube/conf:/opt/sonarqube/conf
 
         env:
           SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
@@ -44,3 +47,15 @@
           - "9000:9000"
       vars:
         ansible_python_interpreter: /usr/bin/python3
+    
+    - name: Clone Git repository
+      git:
+        repo: "{{ git_repo_url }}"
+        dest: "{{ target_directory }}"
+        key_file: "{{ sshkey }}"
+        clone: yes
+        update: yes
+        version: "feature/sonar"
+        accept_hostkey: yes
+        force: yes
+      become_user: cddeploy
