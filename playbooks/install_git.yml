@@ -1,6 +1,6 @@
 ---
 - name: GIT installation
-  hosts: build_server 
+  hosts: build_server
   remote_user: cddeploy
   become: true
   become_method: sudo
