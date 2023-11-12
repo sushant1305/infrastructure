@@ -27,4 +27,7 @@
         repo: "{{ git_repo_url }}"
         dest: "{{ target_directory }}"
         key_file: "{{ sshkey }}"
-      become_user: cddeploy
+        clone: yes
+        update: yes
+        version: "feature/ansible"
+      sudo_user: cddeploy
