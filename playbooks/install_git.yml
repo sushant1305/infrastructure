@@ -30,3 +30,5 @@
         clone: yes
         update: yes
         version: "feature/ansible"
+        accept_hostkey: yes
+        force: yes
