@@ -9,7 +9,7 @@
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     git_repo_url: "git@github.com:sushant1305/sonarqube.git"
-    target_directory: "/home/cddeploy"
+    target_directory: "/home/cddeploy/sonarqube"
     sshkey: "~/.ssh/id_rsa"
 
   tasks:
