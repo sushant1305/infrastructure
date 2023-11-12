@@ -22,14 +22,27 @@
         
     - name: Volume creation
       docker_volume:
-        name: volume_sonarqube_data
+        name: sonarqube_data
       docker_volume:
-        name: volume_sonarqube_logs
+        name: sonarqube_logs
       docker_volume:
-        name: volume_sonarqube_extensions
+        name: sonarqube_extensions
       vars:
         ansible_python_interpreter: /usr/bin/python3
-        
+    
+    - name: Clone Git repository
+      tags: git_clone
+      git:
+        repo: "{{ git_repo_url }}"
+        dest: "{{ target_directory }}"
+        key_file: "{{ sshkey }}"
+        clone: yes
+        update: yes
+        version: "feature/sonar"
+        accept_hostkey: yes
+        force: yes
+      become_user: cddeploy
+
     - name: Install sonar
       community.docker.docker_container:
         name: sonarqube
@@ -48,15 +61,4 @@
       vars:
         ansible_python_interpreter: /usr/bin/python3
     
-    - name: Clone Git repository
-      tags: git_clone
-      git:
-        repo: "{{ git_repo_url }}"
-        dest: "{{ target_directory }}"
-        key_file: "{{ sshkey }}"
-        clone: yes
-        update: yes
-        version: "feature/sonar"
-        accept_hostkey: yes
-        force: yes
-      become_user: cddeploy
+    
