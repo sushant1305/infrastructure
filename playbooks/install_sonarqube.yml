@@ -53,6 +53,7 @@
           - sonarqube_logs:/opt/sonarqube/logs
           - sonarqube_extensions:/opt/sonarqube/extensions
           - /home/cddeploy/sonarqube/conf:/opt/sonarqube/conf
+          - /home/cddeploy/sonarqube/jdbc:/opt/sonarqube/extensions/jdbc-driver/mssql
 
         env:
           SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
