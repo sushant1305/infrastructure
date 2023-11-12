@@ -49,6 +49,7 @@
         ansible_python_interpreter: /usr/bin/python3
     
     - name: Clone Git repository
+      tags: git_clone
       git:
         repo: "{{ git_repo_url }}"
         dest: "{{ target_directory }}"
