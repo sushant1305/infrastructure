@@ -57,7 +57,7 @@
       docker_image:
         name: jenkins
         repository: 192.168.0.130:5000
-        tag: latest
+        tag: v1.0
         push: true
         source: local
       become_user: cddeploy
