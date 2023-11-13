@@ -34,6 +34,13 @@
         name: 192.168.0.130:5000/jenkins
         tag: v1.0
 
+    - name: Remove Jenkins image
+      tags: remove_jenkins
+      docker_image:
+        state: absent
+        name: jenkins
+        tag: v1.0
+
     - name: Build Jenkins image
       tags: build_jenkins
       docker_image:
