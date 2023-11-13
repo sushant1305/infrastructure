@@ -44,7 +44,7 @@
         state: present
 
     - name: Tag and push to local registry
-      tags: build_jenkins
+      tags: push_jenkins
       docker_image:
         name: jenkins:v1.0
         repository: 192.168.0.130:5000
