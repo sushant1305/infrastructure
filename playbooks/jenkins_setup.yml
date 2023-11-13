@@ -51,3 +51,7 @@
         push: true
         source: local
       become_user: cddeploy
+    
+    - name: Show test output
+      debug:
+        msg: "{{ out }}"
