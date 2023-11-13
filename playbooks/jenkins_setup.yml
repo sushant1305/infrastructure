@@ -51,3 +51,4 @@
         tag: jenkins
         push: true
         source: local
+      become_user: cddeploy
