@@ -33,7 +33,7 @@
         repository: 192.168.0.130:5000
         build:
           path: '{{ target_directory }}'
-          source: build
+        source: build
         state: present
       vars:
         ansible_python_interpreter: /usr/bin/python3
