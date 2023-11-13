@@ -11,7 +11,8 @@
     git_repo_url: "git@github.com:sushant1305/jenkins_config.git"
     target_directory: "/home/cddeploy/jenkins"
     sshkey: "~/.ssh/id_rsa"
-
+    ansible_python_interpreter: /usr/bin/python3
+    
   tasks:
     - name: Clone Git repository
       tags: run_jenkins 
@@ -25,15 +26,29 @@
         accept_hostkey: yes
         force: yes
       become_user: cddeploy
+      
+    - name: Remove Jenkins image
+      tags: build_jenkins
+      docker_image:
+        state: absent
+        name: jenkins
+        tag: v1.0
 
     - name: Build Jenkins image
       tags: build_jenkins
       docker_image:
         name: jenkins:v1.0
-        repository: 192.168.0.130:5000
         build:
           path: '{{ target_directory }}'
         source: build
         state: present
-      vars:
-        ansible_python_interpreter: /usr/bin/python3
+        push: true
+
+    - name: Tag and push to local registry
+      tags: build_jenkins
+      docker_image:
+        name: jenkins
+        repository: 192.168.0.130:5000
+        tag: 7
+        push: true
+        source: local
