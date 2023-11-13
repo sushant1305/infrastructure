@@ -31,7 +31,6 @@
       docker_image:
         name: jenkins:v1.0
         repository: 192.168.0.130:5000
-        build:
         path: {{ target_directory }}/Dockerfile
         source: build
         state: present
