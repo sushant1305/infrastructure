@@ -28,7 +28,7 @@
       become_user: cddeploy
       
     - name: Remove Jenkins image
-      tags: remove_jenkins
+      tags: build_jenkins
       docker_image:
         state: absent
         name: jenkins
@@ -48,6 +48,6 @@
       docker_image:
         name: jenkins
         repository: 192.168.0.130:5000
-        tag: 7
+        tag: v1.0
         push: true
         source: local
