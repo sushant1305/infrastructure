@@ -35,5 +35,7 @@
         path: /home/cddeploy/jenkins/Dockerfile
         source: build
         state: present
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
     
     
