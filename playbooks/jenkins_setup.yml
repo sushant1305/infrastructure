@@ -9,7 +9,7 @@
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     git_repo_url: "git@github.com:sushant1305/jenkins_config.git"
-    target_directory: "/opt/jenkins"
+    target_directory: "/home/cddeploy/jenkins"
     sshkey: "~/.ssh/id_rsa"
 
   tasks:
@@ -31,7 +31,7 @@
       docker_image:
         name: jenkins:v1.0
         build:
-          path: //opt/jenkins/Dockerfile
+          path: /home/cddeploy/jenkins/Dockerfile
           source: build
         state: present
     
