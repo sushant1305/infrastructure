@@ -31,8 +31,9 @@
       docker_image:
         name: jenkins:v1.0
         repository: 192.168.0.130:5000
-        path: '{{ target_directory }}'
-        source: build
+        build:
+          path: '{{ target_directory }}'
+          source: build
         state: present
       vars:
         ansible_python_interpreter: /usr/bin/python3
