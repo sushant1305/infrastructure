@@ -1,0 +1,44 @@
+---
+- hosts: build_server
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars_files:
+    - root_password.yml
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+    git_repo_url: "git@github.com:sushant1305/jenkins_config.git"
+    target_directory: "/opt/jenkins"
+    sshkey: "~/.ssh/id_rsa"
+
+  tasks:
+    - name: Volume creation
+      docker_volume:
+        name: sonarqube_data
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+    
+    - name: Clone Git repository
+      tags: run_jenkins 
+      git:
+        repo: "{{ git_repo_url }}"
+        dest: "{{ target_directory }}"
+        key_file: "{{ sshkey }}"
+        clone: yes
+        update: yes
+        version: "feature/startup_config"
+        accept_hostkey: yes
+        force: yes
+      become_user: cddeploy
+
+    - name: Build Jenkins image
+      tags: build_jenkins
+      docker_image:
+        name: jenkins:v1.0
+        build:
+          path: //opt/jenkins/Dockerfile
+          source: build
+        state: present
+    
+    
