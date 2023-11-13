@@ -28,7 +28,7 @@
       become_user: cddeploy
       
     - name: Remove Jenkins image
-      tags: build_jenkins
+      tags: remove_jenkins
       docker_image:
         state: absent
         name: jenkins
