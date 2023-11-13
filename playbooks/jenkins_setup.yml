@@ -44,12 +44,14 @@
         state: present
         
     - name: Log into private registry and force re-authorization
+      tags: push_jenkins
       docker_login:
         registry: 192.168.0.130:5000
         username: cddeploy
         password: admin123
         reauthorize: yes
-    
+      become_user: cddeploy
+      
     - name: Tag and push to local registry
       tags: push_jenkins
       docker_image:
