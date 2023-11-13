@@ -36,4 +36,3 @@
         state: present
       vars:
         ansible_python_interpreter: /usr/bin/python3
-      become_user: cddeploy
