@@ -42,7 +42,6 @@
           path: '{{ target_directory }}'
         source: build
         state: present
-        push: true
 
     - name: Tag and push to local registry
       tags: build_jenkins
