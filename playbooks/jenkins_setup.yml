@@ -13,12 +13,6 @@
     sshkey: "~/.ssh/id_rsa"
 
   tasks:
-    - name: Volume creation
-      docker_volume:
-        name: sonarqube_data
-      vars:
-        ansible_python_interpreter: /usr/bin/python3
-    
     - name: Clone Git repository
       tags: run_jenkins 
       git:
