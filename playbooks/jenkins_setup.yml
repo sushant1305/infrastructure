@@ -30,9 +30,10 @@
       tags: build_jenkins
       docker_image:
         name: jenkins:v1.0
+        repository: 192.168.0.130:5000
         build:
-          path: /home/cddeploy/jenkins/Dockerfile
-          source: build
+        path: /home/cddeploy/jenkins/Dockerfile
+        source: build
         state: present
     
     
