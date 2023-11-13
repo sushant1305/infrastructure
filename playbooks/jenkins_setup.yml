@@ -48,6 +48,6 @@
       docker_image:
         name: jenkins:v1.0
         repository: 192.168.0.130:5000
-        tag: 192.168.0.130:5000/jenkins
+        tag: 192.168.0.130:5000/jenkins:v1.0
         push: true
         source: local
