@@ -46,8 +46,8 @@
     - name: Tag and push to local registry
       tags: push_jenkins
       docker_image:
-        name: jenkins:v1.0
+        name: jenkins
         repository: 192.168.0.130:5000
-        tag: 192.168.0.130:5000/jenkins:v1.0
+        tag: v1.0
         push: true
         source: local
