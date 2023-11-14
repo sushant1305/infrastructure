@@ -71,4 +71,3 @@
         restart: true
         ports:
           - "8085:8080"
-      become: true
