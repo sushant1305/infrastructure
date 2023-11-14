@@ -63,7 +63,6 @@
         volumes:
           - jenkins_data:/var/jenkins_home
           - /home/cddeploy/jenkins/casc.yml:/var/jenkins_home/casc.yml
-          - /usr/bin/docker: /usr/bin/docker
         env:
           JENKINS_ADMIN_ID: "cddeploy"
           JENKINS_ADMIN_PASSWORD: "admin123"
