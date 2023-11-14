@@ -40,6 +40,7 @@
         state: absent
         name: jenkins
         tag: v1.0
+        force: yes
 
     - name: Build Jenkins image
       tags: build_jenkins
@@ -54,7 +55,7 @@
       docker_volume:
         name: jenkins_data
     
-    - name: Install sonar
+    - name: Start Jenkins
       tags: run_jenkins
       community.docker.docker_container:
         name: jenkins
