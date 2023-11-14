@@ -64,9 +64,9 @@
           - jenkins_data:/var/jenkins_home
           - /home/cddeploy/jenkins/casc.yml:/var/jenkins_home/casc.yml
         env:
-          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
           JENKINS_ADMIN_ID: "cddeploy"
           JENKINS_ADMIN_PASSWORD: "admin123"
         restart: true
         ports:
           - "8085:8080"
+      become: yes
