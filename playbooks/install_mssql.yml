@@ -15,7 +15,8 @@
       docker_volume:
         name: sqlvolume
         
-    - name: Install sqlserver
+    - name: Run sqlserver
+      tags: run_sqlserver
       community.docker.docker_container:
         name: sqlserver
         image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04

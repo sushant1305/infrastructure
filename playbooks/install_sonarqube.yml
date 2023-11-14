@@ -31,7 +31,7 @@
         ansible_python_interpreter: /usr/bin/python3
     
     - name: Clone Git repository
-      tags: run_sonar 
+      tags: config_update 
       git:
         repo: "{{ git_repo_url }}"
         dest: "{{ target_directory }}"
@@ -43,7 +43,7 @@
         force: yes
       become_user: cddeploy
 
-    - name: Install sonar
+    - name: Run sonar
       tags: run_sonar
       community.docker.docker_container:
         name: sonarqube
