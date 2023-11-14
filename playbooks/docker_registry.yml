@@ -16,6 +16,7 @@
         name: registry_volume
         
     - name: Install docker registry
+      tags: run_registry
       community.docker.docker_container:
         name: docker_registry
         image: registry:latest
