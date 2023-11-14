@@ -62,6 +62,7 @@
         image: jenkins:v1.0
         volumes:
           - jenkins_data:/var/jenkins_home
+          - /home/cddeploy/jenkins/casc.yml:/var/jenkins_home/casc.yml
         env:
           SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
           JENKINS_ADMIN_ID: "cddeploy"
