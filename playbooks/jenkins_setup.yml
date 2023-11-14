@@ -49,12 +49,22 @@
           path: '{{ target_directory }}'
         source: build
         state: present
-      
-    - name: Tag and push to local registry
-      tags: push_jenkins
-      docker_image:
-        name: jenkins:v1.0
-        repository: 192.168.0.130:5000/jenkins
-        push: true
-        source: local
-      become_user: cddeploy
+    
+    - name: Create a volume
+      docker_volume:
+        name: jenkins_data
+    
+    - name: Install sonar
+      tags: run_jenkins
+      community.docker.docker_container:
+        name: jenkins
+        image: jenkins:v1.0
+        volumes:
+          - jenkins_data:/var/jenkins_home
+        env:
+          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+          JENKINS_ADMIN_ID: "cddeploy"
+          JENKINS_ADMIN_PASSWORD: "admin123"
+        restart: true
+        ports:
+          - "8085:8080"
