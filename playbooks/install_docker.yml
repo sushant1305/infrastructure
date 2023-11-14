@@ -44,3 +44,4 @@
         name: docker
         state: started
         enabled: yes
+      become_user: cddeploy
