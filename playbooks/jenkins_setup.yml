@@ -67,8 +67,6 @@
         env:
           JENKINS_ADMIN_ID: "cddeploy"
           JENKINS_ADMIN_PASSWORD: "admin123"
-          group-add: "994"
         restart: true
         ports:
           - "8085:8080"
-      become: true
