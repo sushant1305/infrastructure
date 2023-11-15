@@ -49,6 +49,6 @@
     - name: Load image from archive and push to a private registry
       tags: deploy
       docker_image:
-      name: courier_mgmt
+        name: courier_mgmt
         load_path: /home/cddeploy/docker/courier_mgmt.tar
         source: load
