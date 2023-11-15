@@ -45,5 +45,3 @@
       copy:
           src: /home/cddeploy/docker/courier_mgmt.tar
           dest: /home/cddeploy/docker/courier_mgmt.tar
-          remote_src: yes
-      delegate_to: localhost
