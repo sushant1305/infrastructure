@@ -42,6 +42,7 @@
         ansible_python_interpreter: /usr/bin/python3
       
     - name: Copy Remote-To-Remote (from serverA to serverB)
+      tags: deploy
       synchronize: 
           src: /home/cddeploy/docker
           dest: /home/cddeploy/docker
