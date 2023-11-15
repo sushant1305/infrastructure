@@ -9,11 +9,12 @@
     - root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
+    docker_installation: "/opt/docker"
 
   tasks:
     - name: Create a directory under home
       file:
-        path: /opt/docker
+        path: "{{ docker_installation }}"
         state: directory
         mode: '0755'
         
@@ -25,7 +26,7 @@
     - name: This command will change the working directory to somedir/
       shell:
         cmd: sudo sh install-docker.sh
-        chdir: /home/cddeploy/app/docker
+        chdir: "{{ docker_installation }}"
 
     - name: Start Docker service
       service:
