@@ -11,13 +11,22 @@
     ansible_become_pass: "{{ sudo_pass }}"
 
   tasks:
-    - name: Install Docker
-      ansible.builtin.apt:
-        name:
-          - docker-ce
-          - docker-ce-cli
-        state: latest
+    - name: Create a directory under home
+      file:
+        path: /home/cddeploy/app
+        state: directory
+        mode: '0755'
         
+    - name: This command will change the working directory to somedir/
+      shell:
+        cmd: curl -fsSL https://get.docker.com -o install-docker.sh
+        chdir: /home/cddeploy/app/docker
+    
+    - name: This command will change the working directory to somedir/
+      shell:
+        cmd: sudo sh install-docker.sh
+        chdir: /home/cddeploy/app/docker
+
     - name: Start Docker service
       service:
         name: docker
