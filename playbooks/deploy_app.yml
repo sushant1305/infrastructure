@@ -18,12 +18,12 @@
         state: directory
         mode: '0755'
         
-    - name: This command will change the working directory to somedir/
+    - name: Get Docker engine
       shell:
         cmd: curl -fsSL https://get.docker.com -o install-docker.sh
-        chdir: /home/cddeploy/app/docker
+        chdir: "{{ docker_installation }}"
     
-    - name: This command will change the working directory to somedir/
+    - name: Install Docker
       shell:
         cmd: sudo sh install-docker.sh
         chdir: "{{ docker_installation }}"
