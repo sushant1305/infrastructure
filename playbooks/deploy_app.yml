@@ -10,6 +10,7 @@
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     docker_installation: "/opt/docker"
+    package: "docker"
 
   tasks:
     - name: Create docker directory
@@ -22,7 +23,7 @@
       package:
         name: "{{ package }}"
         state: present
-        
+
     - name: Start Docker service
       service:
         name: docker
