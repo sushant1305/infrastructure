@@ -13,7 +13,7 @@
   tasks:
     - name: Create a directory under home
       file:
-        path: /home/cddeploy/app
+        path: /home/cddeploy/app/docker
         state: directory
         mode: '0755'
         
