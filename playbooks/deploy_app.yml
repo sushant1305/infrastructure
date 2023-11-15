@@ -19,7 +19,7 @@
         state: directory
         mode: '0755'
     
-    - name: install package
+    - name: Install Docker if not present
       package:
         name: "{{ package }}"
         state: present
@@ -29,3 +29,9 @@
         name: docker
         state: started
         enabled: yes
+
+    - name: Pull the courier_management image
+      community.docker.docker_image:
+        name: courier_mgmt
+        repository: 192.168.0.130:5000/courier_mgmt:latest
+        source: pull
