@@ -43,7 +43,6 @@
       
     - name: Copy Remote-To-Remote (from serverA to serverB)
       tags: deploy
-      synchronize: 
+      fetch:
           src: /home/cddeploy/docker
           dest: /home/cddeploy/docker
-      delegate_to: controller
