@@ -9,11 +9,12 @@
     - root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
-    docker_installation: "/opt/docker"
+    docker_installation: "/home/cddeploy/docker"
     package: "docker"
 
   tasks:
     - name: Create docker directory
+      tags: deploy
       file:
         path: "{{ docker_installation }}"
         state: directory
@@ -31,7 +32,7 @@
         enabled: yes
 
     - name: Pull the courier_management image
-      tags: deploy
+      #tags: deploy
       docker_image:
         name: courier_mgmt
         repository: http://192.168.0.130:5000/courier_mgmt:latest
@@ -39,3 +40,9 @@
       delegate_to: localhost
       vars:
         ansible_python_interpreter: /usr/bin/python3
+      
+    - name: Copy Remote-To-Remote (from serverA to serverB)
+      synchronize: 
+          src: /home/cddeploy/docker
+          dest: /home/cddeploy/docker
+      delegate_to: controller
