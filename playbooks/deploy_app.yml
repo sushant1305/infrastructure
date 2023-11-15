@@ -43,6 +43,7 @@
       
     - name: Copy Remote-To-Remote (from serverA to serverB)
       tags: deploy
-      fetch:
+      copy:
           src: /home/cddeploy/docker
           dest: /home/cddeploy/docker
+          remote_src: yes
