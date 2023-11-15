@@ -27,7 +27,7 @@
     - name: Install node if not present
       tags: deploy
       package:
-        name: "node"
+        name: "nodejs"
         state: present
 
     - name: Start Docker service
@@ -53,7 +53,6 @@
           dest: /home/cddeploy/docker/courier_mgmt.tar
     
     - name: Load image from archive and push to a private registry
-      tags: deploy
       docker_image:
         name: courier_mgmt
         load_path: /home/cddeploy/docker/courier_mgmt.tar
