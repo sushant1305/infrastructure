@@ -2,7 +2,6 @@
 - name: Docker Installation
   hosts: app_prod
   remote_user: cddeploy
-  become: true
   become_method: sudo
   gather_facts: false
   vars_files:
@@ -44,6 +43,6 @@
     - name: Copy Remote-To-Remote (from serverA to serverB)
       tags: deploy
       copy:
-          src: /home/cddeploy/docker
-          dest: /home/cddeploy/docker
+          src: /home/cddeploy/docker/courier_mgmt.tar
+          dest: /home/cddeploy/docker/courier_mgmt.tar
           remote_src: yes
