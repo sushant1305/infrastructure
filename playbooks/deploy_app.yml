@@ -29,6 +29,7 @@
       package:
         name: "nodejs"
         state: present
+      become: true
 
     - name: Start Docker service
       service:
