@@ -24,6 +24,12 @@
         name: "{{ package }}"
         state: present
 
+    - name: Install node if not present
+      tags: deploy
+      package:
+        name: "node"
+        state: present
+
     - name: Start Docker service
       service:
         name: docker
