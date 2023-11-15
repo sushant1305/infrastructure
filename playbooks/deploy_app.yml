@@ -11,13 +11,8 @@
     ansible_become_pass: "{{ sudo_pass }}"
 
   tasks:
-    - name: Get Docker repo
-      get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d/docker-ce.repo
-
     - name: Install Docker
-      yum:
+      ansible.builtin.apt:
         name:
           - docker-ce
           - docker-ce-cli
