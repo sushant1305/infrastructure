@@ -18,27 +18,11 @@
         state: directory
         mode: '0755'
     
-    - name: Check if Docker is installed
-      command: docker --version
-      register: docker_check
-      ignore_errors: yes
-    
-    - name: Debug Docker Output
-      debug:
-        var: docker_check
-
-    - name: Get Docker engine
-      shell:
-        cmd: curl -fsSL https://get.docker.com -o install-docker.sh
-        chdir: "{{ docker_installation }}"
-      when: docker_check.failed
-
-    - name: Install Docker
-      shell:
-        cmd: sudo sh install-docker.sh
-        chdir: "{{ docker_installation }}"
-      when: not docker_check.failed
-
+    - name: install package
+      package:
+        name: "{{ package }}"
+        state: present
+        
     - name: Start Docker service
       service:
         name: docker
