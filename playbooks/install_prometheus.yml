@@ -1,0 +1,25 @@
+---
+- hosts: controller
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars_files:
+    - root_password.yml
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+  
+  tasks:
+    - name: Create new user
+      user:
+        name: prometheus
+        shell: /bin/bash
+        
+    
+    - name: Volume creation
+      get_url:
+        url: https://github.com/prometheus/prometheus/releases/download/v2.2.1/prometheus-2.2.1.linux-amd64.tar.gz
+        dest: /home/prometheus
+      become_user: prometheus
+    
+    
