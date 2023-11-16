@@ -9,7 +9,7 @@
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     git_repo_url: "git@github.com:sushant1305/jenkins_config.git"
-    target_directory: "/home/cddeploy/jenkins"
+    target_directory: "/home/cddeploy/infra/jenkins"
     sshkey: "~/.ssh/id_rsa"
     ansible_python_interpreter: /usr/bin/python3
     
