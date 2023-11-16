@@ -37,7 +37,6 @@
         enabled: yes
 
     - name: Pull the courier_management image
-      tags: deploy
       docker_image:
         name: courier_mgmt
         repository: http://192.168.0.130:5000/courier_mgmt:latest
