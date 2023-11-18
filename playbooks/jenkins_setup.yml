@@ -22,7 +22,7 @@
         key_file: "{{ sshkey }}"
         clone: yes
         update: yes
-        version: "feature/startup_config"
+        version: "feature/extended_testing"
         accept_hostkey: yes
         force: yes
       become_user: cddeploy

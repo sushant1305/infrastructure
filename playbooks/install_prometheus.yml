@@ -16,10 +16,20 @@
         shell: /bin/bash
         
     
-    - name: Volume creation
+    - name: get prometheus binary
       get_url:
         url: https://github.com/prometheus/prometheus/releases/download/v2.2.1/prometheus-2.2.1.linux-amd64.tar.gz
         dest: /home/prometheus
       become_user: prometheus
     
+    - name: unarchive binary
+      unarchive:
+        src: /home/prometheus/prometheus-2.2.1.linux-amd64.tar.gz
+        dest: /home/prometheus
+      become_user: prometheus
+
+    - name: Extract foo.tgz into /var/lib/foo
+      ansible.builtin.unarchive:
+    src: foo.tgz
+    dest: /var/lib/foo
     
