@@ -31,7 +31,7 @@
       tags: remove_jenkins
       docker_image:
         state: absent
-        name: 192.168.0.130:5000/jenkins
+        name: jenkins
         tag: v1.0
 
     - name: Remove Jenkins image
