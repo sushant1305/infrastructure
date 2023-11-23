@@ -55,6 +55,14 @@
       docker_volume:
         name: jenkins_data
     
+    - name: Chmod of docker sock to run agents outside container
+      file:
+        path: /var/run/docker.sock
+        owner: root
+        group: root
+        mode: '666'
+      become: true
+        
     - name: Start Jenkins
       tags: run_jenkins
       community.docker.docker_container:
