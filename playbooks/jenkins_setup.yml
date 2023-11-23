@@ -63,6 +63,7 @@
         volumes:
           - jenkins_data:/var/jenkins_home
           - /home/cddeploy/infra/jenkins/casc.yml:/var/jenkins_home/casc.yml
+          - /home/cddeploy/infra/jenkins/job.groovy:/var/jenkins_home/job_dsl/job.groovy
           - /var/run/docker.sock:/var/run/docker.sock
         env:
           JENKINS_ADMIN_ID: "cddeploy"
