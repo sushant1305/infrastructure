@@ -40,7 +40,7 @@
         state: absent
         name: jenkins
         tag: v1.0
-        force: yes
+        force_absent: true
 
     - name: Build Jenkins image
       tags: build_jenkins
