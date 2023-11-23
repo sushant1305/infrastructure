@@ -50,6 +50,11 @@
           path: '{{ target_directory }}'
         source: build
         state: present
+      register: jenkins_build
+    
+    - name: Print build output
+      debug:
+        var: jenkins_build
     
     - name: Create a volume
       docker_volume:
@@ -79,3 +84,8 @@
         restart: true
         ports:
           - "8085:8080"
+      register: jenkins_start
+
+    - name: Print jenkins start output
+      debug:
+        var: jenkins_start
