@@ -50,6 +50,7 @@
           path: '{{ target_directory }}'
         source: build
         state: present
+        force_source: true
       register: jenkins_build
     
     - name: Print build output
