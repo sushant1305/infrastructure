@@ -7,9 +7,9 @@
   tags: run_registry
   community.docker.docker_container:
     name: docker_registry
-    image: registry:latest
+    image: registry:{{ img_version }}
     volumes:
-      - registry_volume:/var/lib/registry
+      - registry_volume:{{ volume_path }}
     restart: true
     ports:
-      - "5000:5000"
+      - "{{ ports[0] }}:{{ ports[1] }}"
