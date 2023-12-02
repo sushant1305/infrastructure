@@ -65,11 +65,11 @@
       - /home/cddeploy/infra/jenkins/job.groovy:/var/jenkins_home/job_dsl/job.groovy
       - /var/run/docker.sock:/var/run/docker.sock
     env:
-      JENKINS_ADMIN_ID: "cddeploy"
-      JENKINS_ADMIN_PASSWORD: "admin123"
+      JENKINS_ADMIN_ID: "{{ jenkins_admin_id }}"
+      JENKINS_ADMIN_PASSWORD: "{{ jenkins_admin_pwd }}"
     restart: true
     ports:
-      - "8085:8080"
+      - "{{ ports[0] }}:{{ ports[1] }}"
   register: jenkins_start
 
 - name: Print jenkins start output
