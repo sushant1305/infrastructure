@@ -1,2 +1,7 @@
 ---
-# vars file for jenkins
+git_repo_url: "git@github.com:sushant1305/jenkins_config.git"
+target_directory: "/home/cddeploy/infra/jenkins"
+sshkey: "~/.ssh/id_rsa"
+ports:
+  - 8085
+  - 8080
