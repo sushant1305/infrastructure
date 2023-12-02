@@ -1,5 +1,12 @@
 ---
 - name: Role for calling environment setup playbooks 
   hosts: controller
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+    ansible_python_interpreter: /usr/bin/python3
   roles:
-    - role: docker_registry 
+    - role: docker_registry

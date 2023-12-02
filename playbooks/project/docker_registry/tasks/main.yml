@@ -1,25 +1,15 @@
 ---
-- hosts: controller
-  remote_user: cddeploy
-  become: true
-  become_method: sudo
-  gather_facts: false
-  vars:
-    ansible_become_pass: "{{ sudo_pass }}"
-    ansible_python_interpreter: /usr/bin/python3
-  
-  tasks:
-    - name: Create Volume for registry
-      docker_volume:
-        name: registry_volume
+- name: Create Volume for registry
+  docker_volume:
+    name: registry_volume
         
-    - name: Install docker registry
-      tags: run_registry
-      community.docker.docker_container:
-        name: docker_registry
-        image: registry:latest
-        volumes:
-          - registry_volume:/var/lib/registry
-        restart: true
-        ports:
-          - "5000:5000"
+- name: Install docker registry
+  tags: run_registry
+  community.docker.docker_container:
+    name: docker_registry
+    image: registry:latest
+    volumes:
+      - registry_volume:/var/lib/registry
+    restart: true
+    ports:
+      - "5000:5000"
