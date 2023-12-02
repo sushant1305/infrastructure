@@ -1,0 +1,14 @@
+---
+- name: Playbook for starting docker registry container
+  hosts: controller
+  remote_user: cddeploy
+  become: true
+  become_method: sudo
+  gather_facts: false
+  vars_files:
+    - docker_registry/vars/root_password.yml
+  vars:
+    ansible_become_pass: "{{ sudo_pass }}"
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - role: docker_registry

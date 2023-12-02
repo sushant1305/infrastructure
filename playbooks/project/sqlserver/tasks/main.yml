@@ -1,2 +1,18 @@
 ---
-# tasks file for sqlserver
+- name: Create Docker volume
+  docker_volume:
+    name: sqlvolume
+        
+- name: Run sqlserver
+  tags: run_sqlserver
+  community.docker.docker_container:
+    name: sqlserver
+    image: mcr.microsoft.com/mssql/server:{{ img_version }}
+    volumes:
+      - sqlvolume:{{ volume_path }}
+    env:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: "{{ ms_sql_passwd }}" 
+    restart: true
+    ports:
+      - "{{ ports[0] }}:{{ ports[1] }}"

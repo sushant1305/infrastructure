@@ -1,1 +1,6 @@
-sudo_pass: admin123
+---
+img_version: 2019-CU14-ubuntu-20.04
+volume_path: /var/opt/mssql
+ports:
+  - 1433
+  - 1433

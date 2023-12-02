@@ -1,14 +1,14 @@
 ---
-- name: Role for calling environment setup playbooks 
-  hosts: controller
+- name: Playbook for starting mssql server 
+  hosts: db_server
   remote_user: cddeploy
   become: true
   become_method: sudo
   gather_facts: false
   vars_files:
-    - docker_registry/vars/root_password.yml
+    - sqlserver/vars/root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     ansible_python_interpreter: /usr/bin/python3
   roles:
-    - role: docker_registry
+    - role: sqlserver
