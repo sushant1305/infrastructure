@@ -5,6 +5,8 @@
       - java
     use_backend: "yum"
     state: latest
+  vars:
+    ansible_python_interpreter: /usr/bin/python
         
 - name: Volume creation
   docker_volume:
