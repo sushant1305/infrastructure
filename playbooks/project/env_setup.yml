@@ -1,0 +1,5 @@
+---
+- name: Role for calling environment setup playbooks 
+  hosts: controller
+  roles:
+    - role: docker_registry 
