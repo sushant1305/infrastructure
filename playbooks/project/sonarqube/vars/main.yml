@@ -1,2 +1,8 @@
 ---
-# vars file for sonarqube
+sshkey: "~/.ssh/id_rsa"
+target_directory: "/home/cddeploy/sonarqube"
+git_repo_url: "git@github.com:sushant1305/sonarqube.git"
+img_version: latest
+ports:
+  - 9000
+  - 9000
