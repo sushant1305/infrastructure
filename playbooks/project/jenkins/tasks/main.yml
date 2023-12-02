@@ -28,7 +28,7 @@
       path: '{{ target_directory }}'
     source: build
     state: present
-    force_source: true
+    force_source: false
   register: jenkins_build
 
 - name: Print build output
