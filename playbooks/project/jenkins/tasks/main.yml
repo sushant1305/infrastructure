@@ -29,6 +29,8 @@
     source: build
     state: present
     force_source: false
+    cache_from:
+      - jenkins/jenkins:lts
   register: jenkins_build
 
 - name: Print build output
