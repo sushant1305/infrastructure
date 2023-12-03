@@ -26,8 +26,6 @@
     name: jenkins:v1.0
     build:
       path: '{{ target_directory }}'
-      cache_from:
-        - jenkins/jenkins:lts
     source: build
     state: present
     force_source: false
