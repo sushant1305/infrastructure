@@ -1,6 +1,6 @@
 ---
 - name: Playbook for creating Jenkins image and starting
-  hosts: build_server 
+  hosts: controller 
   remote_user: cddeploy
   become: true
   become_method: sudo
