@@ -1,6 +1,6 @@
 ---
 - name: Docker Installation
-  hosts: controller 
+  hosts: {{ HOSTS }} 
   remote_user: cddeploy
   become: true
   become_method: sudo
