@@ -1,6 +1,6 @@
 ---
 - name: Playbook for starting docker registry container
-  hosts: controller
+  hosts: "{{ HOSTS }}"
   remote_user: cddeploy
   become: true
   become_method: sudo

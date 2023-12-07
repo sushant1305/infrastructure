@@ -1,6 +1,6 @@
 ---
 - name: Playbook for starting mssql server 
-  hosts: db_server
+  hosts: "{{ HOSTS }}"
   remote_user: cddeploy
   become: true
   become_method: sudo
