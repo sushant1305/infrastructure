@@ -9,3 +9,5 @@
     - docker_install/vars/root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
+  roles:
+    - role: docker_install
