@@ -1,2 +1,34 @@
 ---
-# tasks file for docker_install
+- name: Install dependencies
+  yum:
+    name:
+      - yum-utils
+      - python3
+      - python3-pip
+    use_backend: "yum"
+    state: latest
+
+- name: Install Docker SDK for python
+  pip: 
+    name: docker
+    executable: pip3
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+- name: Get Docker repo
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install Docker
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+    state: latest
+    
+- name: Start Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
