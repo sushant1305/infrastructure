@@ -1,27 +1,14 @@
 ---
-- hosts: controller
+- name: Playbook for starting docker registry container
+  hosts: "{{ HOSTS }}"
   remote_user: cddeploy
   become: true
   become_method: sudo
   gather_facts: false
   vars_files:
-    - root_password.yml
+    - docker_registry/vars/root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     ansible_python_interpreter: /usr/bin/python3
-  
-  tasks:
-    - name: Create Volume for registry
-      docker_volume:
-        name: registry_volume
-        
-    - name: Install docker registry
-      tags: run_registry
-      community.docker.docker_container:
-        name: docker_registry
-        image: registry:latest
-        volumes:
-          - registry_volume:/var/lib/registry
-        restart: true
-        ports:
-          - "5000:5000"
+  roles:
+    - role: docker_registry

@@ -1,30 +1,14 @@
 ---
-- hosts: db_server
+- name: Playbook for starting mssql server 
+  hosts: "{{ HOSTS }}"
   remote_user: cddeploy
   become: true
   become_method: sudo
   gather_facts: false
   vars_files:
-    - root_password.yml
+    - sqlserver/vars/root_password.yml
   vars:
     ansible_become_pass: "{{ sudo_pass }}"
     ansible_python_interpreter: /usr/bin/python3
-  
-  tasks:
-    - name: Create Docker volume
-      docker_volume:
-        name: sqlvolume
-        
-    - name: Run sqlserver
-      tags: run_sqlserver
-      community.docker.docker_container:
-        name: sqlserver
-        image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
-        volumes:
-          - sqlvolume:/var/opt/mssql
-        env:
-          ACCEPT_EULA: Y
-          MSSQL_SA_PASSWORD: Admin123#
-        restart: true
-        ports:
-          - "1433:1433"
+  roles:
+    - role: sqlserver
